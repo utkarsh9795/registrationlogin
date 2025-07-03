@@ -4,7 +4,13 @@ require('dotenv').config(); // ✅ This line is critical
 const authRoutes = require('./routes/auth');
 
 const app = express();
-app.use(cors());
+const FRONTEND_URL = 'https://registrationlogin-frontend.onrender.com';
+
+app.use(cors({
+  origin: FRONTEND_URL,
+  credentials: true
+}));
+
 app.use(express.json());
 
 app.get('/', (req, res) => {
